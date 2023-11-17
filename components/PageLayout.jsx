@@ -13,7 +13,7 @@ const PageLayout = ({ children }) => {
 
     useEffect(() => {
         const checkScreenSize = () => {
-            const isLargeScreen = window.innerWidth > 768; // Adjust the width as needed
+            const isLargeScreen = window.innerWidth > 1023;
             setSidebarOpen(isLargeScreen);
         };
 
@@ -55,15 +55,15 @@ const PageLayout = ({ children }) => {
 
             <div className="flex-grow bg-gray-100 overflow-y-auto">
                 <button
-                    className="lg:hidden fixed right-4 top-4 z-50 p-2" // Increase z-index to 50
+                    className="lg:hidden fixed right-4 top-4 z-50 p-2"
                     onClick={toggleSidebar}
-                    style={{ position: 'relative', background: 'none', border: 'none' }}
                 >
-                    <svg viewBox="0 0 100 80" width="40" height="40">
-                        <rect width="100" height="20"></rect>
-                        <rect y="30" width="100" height="20"></rect>
-                        <rect y="60" width="100" height="20"></rect>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
+
                 </button>
                 {children}
             </div>

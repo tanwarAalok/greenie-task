@@ -35,7 +35,7 @@ const UserDetails = ({ users, onUserClick }) => {
 
     return (
         <div className="w-full px-10 py-6">
-            <div className="flex justify-between items-center flex-wrap">
+            <div className="flex sm:gap-x-16 lg:justify-between items-center flex-wrap">
                 <h2 className="text-2xl font-bold">All Users</h2>
                 <input
                     type="text"
