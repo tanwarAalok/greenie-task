@@ -1,12 +1,15 @@
 "use client"
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import PageLayout from '@/components/PageLayout';
 import UserDetails from '../components/UserDetails';
-import UserDetailsPopup from '../components/UserDetailsPopup';
-import PageLayout from "@/components/PageLayout";
-import {usersData} from "@/utils/userDB";
+const UserDetailsPopup = dynamic(() => import('../components/UserDetailsPopup'), {
+  loading: () => <p>Loading...</p>,
+  ssr: false,
+});
 
-
+import { usersData } from '@/utils/userDB';
 
 const Home = () => {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -20,20 +23,20 @@ const Home = () => {
   };
 
   const handleGenerateReport = () => {
-    // Dummy function for generating a report
-    console.log('Generating report for user:', selectedUser);
+    alert('Generating report for user:', selectedUser);
   };
 
   return (
       <PageLayout>
         <UserDetails users={usersData} onUserClick={handleUserClick} />
-          {selectedUser && (
-              <UserDetailsPopup
-                  user={selectedUser}
-                  onClose={handleClosePopup}
-                  onGenerateReport={handleGenerateReport}
-              />
-          )}
+        
+        {selectedUser && (
+            <UserDetailsPopup
+                user={selectedUser}
+                onClose={handleClosePopup}
+                onGenerateReport={handleGenerateReport}
+            />
+        )}
       </PageLayout>
   );
 };
